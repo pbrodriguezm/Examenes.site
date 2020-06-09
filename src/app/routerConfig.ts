@@ -16,7 +16,7 @@ const appRoutes: Routes = [
       {path: 'verificar', component: VerificacionComponent}
     ] 
   },
-  {path:'', redirectTo: '/login', pathMatch: 'full'},
+  { path: '',   component: LoginComponent  },
   { path: 'login',   component: LoginComponent  },
    // otherwise redirect to home
   { path: '**', redirectTo: '/admin' }

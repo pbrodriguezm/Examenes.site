@@ -77,7 +77,7 @@ import { VerificacionComponent } from './components/verificacion/verificacion.co
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("670539174520-d4ca5jo89cu85u4am2sm0tae4gkrducv.apps.googleusercontent.com")
+    provider: new GoogleLoginProvider("1083454176478-t8soqpa2burk2nkv5rudu4ifk2qk6lsd.apps.googleusercontent.com")
   }
 ]);
  
