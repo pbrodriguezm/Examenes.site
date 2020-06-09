@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Configuración de examen</h2>
+<mat-dialog-content class="mat-typography">
+
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre de evaluación</mat-label>
+            <input matInput placeholder="nombre corto" [(ngModel)]="evaExamen.nombre">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput placeholder="Breve descripción" [(ngModel)]="evaExamen.descripcion"></textarea>
+        </mat-form-field>
+        <div>
+        </div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Fecha y hora de inicio</mat-label>
+            <input type="datetime" matInput placeholder="AAAA-MM-DD HH:mm" [(ngModel)]="evaExamen.fechainicio">
+            <mat-icon matSuffix>calendar_today</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Fecha y hora de fin</mat-label>
+            <input type="datetime" matInput placeholder="AAAA-MM-DD HH:mm" [(ngModel)]="evaExamen.fechafin ">
+            <mat-icon matSuffix>calendar_today</mat-icon>
+        </mat-form-field>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close (click)="guardarCambios()" cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>

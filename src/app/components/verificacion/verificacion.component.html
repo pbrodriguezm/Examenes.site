@@ -1,0 +1,77 @@
+<mat-progress-bar *ngIf="cargandoDetalle" mode="indeterminate"></mat-progress-bar>
+<div class="row">
+    <div class="col">
+
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title><i class="fas fa-sort-amount-down-alt"></i> Conectados {{evaLogins.length}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content [style.overflow]="'auto'" style="height: 55vh">
+                <mat-selection-list #shoes [multiple]="false">
+                    <mat-list-option (click)="cargarDataLogin(evaLogin)" *ngFor="let evaLogin of evaLogins">
+                        <div style="font-size: 13px; cursor: pointer;">
+
+                            <span *ngIf="evaLogin.token == null" class="badge badge-primary">Esperando</span>
+                            <span *ngIf="evaLogin.token != null" class="badge badge badge-warning">Validado</span> {{evaLogin.idusuario}}
+
+                        </div>
+                    </mat-list-option>
+                </mat-selection-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Actualizar</button>
+            </mat-card-actions>
+        </mat-card>
+
+
+
+    </div>
+
+    <div *ngIf="paraverficiar" class="col">
+        <mat-card style="height: 74vh">
+            <div>
+                <h1>
+                    <p class="text-lg-center text-black-50 text-capitalize">{{evaUlasalle.nombres}} {{evaUlasalle.apellidos}} </p>
+                </h1>
+                <p class="text-sm-center text-black-50">{{evaUlasalle.dni}}</p>
+
+                <mat-list>
+                    <div mat-subheader>Datos personales</div>
+                    <mat-list-item style="margin-top: -5px;">
+                        <mat-icon mat-list-icon>folder</mat-icon>
+                        <div mat-line>Fecha de Nacimiento</div>
+                        <div mat-line> {{evaUlasalle.fechaNacimiento | date}} </div>
+                    </mat-list-item>
+
+
+                    <mat-list-item style="margin-top: -5px;">
+                        <mat-icon mat-list-icon>folder</mat-icon>
+                        <div mat-line>Correo Electrónico</div>
+                        <div mat-line> {{evaUlasalle.email}} </div>
+                    </mat-list-item>
+
+
+
+                    <mat-list-item style="margin-top: -5px;">
+                        <mat-icon mat-list-icon>folder</mat-icon>
+                        <div mat-line>Celular</div>
+                        <div mat-line> {{evaUlasalle.telefonoCE}} </div>
+                    </mat-list-item>
+
+                </mat-list>
+
+                <div class="d-flex justify-content-center">
+
+                    <span class="border border-success" style="padding: 7px; font-size: 30px;">
+                        {{codigoValidacion}}
+                        <mat-progress-bar mode="buffer"></mat-progress-bar>
+                    </span>
+
+                </div>
+
+                <p style="font-size: 12px;" class="text-info">*Brinde el siguiente código de verificación al postulante validado</p>
+            </div>
+        </mat-card>
+    </div>
+
+</div>

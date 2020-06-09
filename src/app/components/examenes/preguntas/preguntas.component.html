@@ -1,0 +1,67 @@
+<h2>
+
+
+    <i class="fas fa-cloud-upload-alt"></i> Subir CSV - Preguntas</h2>
+
+<mat-card>
+
+    <input type="file" class="upload" (change)="changeListener($event.target.files)" accept=".csv">
+
+    <p>
+        <a mat-button href="https://drive.google.com/file/d/1bumTqUIooj7uxz4rYr9qO54E6_shI2-w/view?usp=sharing" target="_blank"> <i class="fas fa-file-download"></i> Descargue ejemplo de formato básico CSV (por comas)</a>
+    </p>
+
+
+
+    <p class="text-secondary" style="font-size: 11px;">Los campos obligatorios son (puede ser n alternativas): </p>
+    <ul class="text-secondary" style="font-size: 11px;">
+        <li>
+            catcodigoexterno
+        </li>
+        <li>
+            nombre
+        </li>
+        <li>
+            pregunta
+        </li>
+        <li>
+            respuesta
+        </li>
+        <li>
+            alternativa
+        </li>
+    </ul>
+
+
+
+</mat-card>
+
+
+<mat-card *ngIf="errores != null">
+    Resultados LOG
+    <div *ngIf="errores.length >0">
+        <p class="text-danger" style="font-size: 10px;"> Errores ({{errores.length}}):</p>
+        <div *ngFor="let error of errores">
+            <p class="text-danger" style="font-size: 10px;">Linea: {{error.row}} - Codigo: {{error.code}} - {{error.message}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="errores.length ==0">
+        <p class="text-success" style="font-size: 10px;"> Se cargo correctamente ({{data.length}}) resultados</p>
+
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Acciones</mat-label>
+        <textarea style="font-size: 9px;" [(ngModel)]='acciones' matInput></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Errores</mat-label>
+        <textarea style="font-size: 9px;" [(ngModel)]='erroresProceso' matInput></textarea>
+    </mat-form-field>
+</mat-card>
+
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

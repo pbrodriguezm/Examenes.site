@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Configuración de preguntas</h2>
+<mat-dialog-content class="mat-typography">
+
+
+    <mat-card style="margin-top: 3px; margin-bottom: 3px;" *ngFor="let evaCategoria of evaCategorias">
+        {{evaCategoria.nombre}}
+        <div style="margin-top: 10px; font-size: 12px;">
+            <label>Número de preguntas a mostrar </label>
+            <mat-form-field style="width: 100px; margin-right: 5px; margin-left: 5px;" appearance="legacy">
+                <mat-label>Cantidad mínima</mat-label>
+                <input type="number" matInput placeholder="mínimo" [(ngModel)]="evaCategoria.minpreguntas">
+
+
+            </mat-form-field>
+
+            <mat-form-field style="width: 100px" appearance="legacy">
+                <mat-label>Cantidad máxima</mat-label>
+                <input type="number" matInput placeholder="máximo" [(ngModel)]="evaCategoria.maxpreguntas">
+            </mat-form-field>
+            <mat-slide-toggle [(ngModel)]="evaCategoria.aleatorias">mostrar preguntas aleatorias {{evaCategoria.aleatorias}}</mat-slide-toggle>
+        </div>
+    </mat-card>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="guardarCambios()" cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>

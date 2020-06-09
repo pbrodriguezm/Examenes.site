@@ -1,0 +1,134 @@
+<mat-toolbar>
+    Listado de evaluaciones
+    <span class="example-spacer"></span>
+    <button mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+</mat-toolbar>
+
+<div class="d-flex justify-content-center">
+    <mat-spinner *ngIf="cargando"></mat-spinner>
+</div>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let evaExamen of evaExamenes">
+        <mat-expansion-panel-header (click)="cargarDatosExamen(evaExamen)">
+            <mat-panel-title>
+                {{evaExamen.nombre}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{evaExamen.descripcion}}
+            </mat-panel-description>
+
+
+            <div (click)="openDialogExamen(evaExamen)" matTooltip="Configuración de examen" style="cursor: pointer;">
+                <i style="margin-right: 15px; color:#393e46" class="fas fa-cog"></i>
+            </div>
+
+        </mat-expansion-panel-header>
+
+
+        <div class="row">
+            <div class="col">
+                <mat-card>
+
+                    <!--Cat evaluados-->
+                    <div class="d-flex bd-highlight  text-muted text-sm-lef">
+                        <div style="margin-top: 10px;" class="p-2 flex-grow-1 bd-highlightt"> Cantidad de evaluados: {{cantPostulante}}</div>
+                        <div class="p-2 bd-highlight">
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item disabled>
+                                    <i class="fas fa-plus-circle" style="margin-right: 13px;"></i>
+                                    <span>Agregar nuevo</span>
+                                </button>
+                                <button (click)="openDialogEvaluados(evaExamen)" mat-menu-item>
+                                    <i class="fas fa-file-upload"  style="margin-right: 13px;"></i>
+                                    <span>Subir CSV</span>
+                                </button>
+                                <button mat-menu-item disabled>
+                                    <i class="far fa-eye" style="margin-right: 13px;"></i>
+                                    <span>Ver lista</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+
+                    <!--cantidad Preguntas-->
+
+
+                    <div class="d-flex bd-highlight  text-muted text-sm-lef">
+                        <div style="margin-top: 10px;" class="p-2 flex-grow-1 bd-highlightt"> Total de Preguntas: {{cantPreguntas}}</div>
+                        <div class="p-2 bd-highlight">
+                            <button mat-icon-button [matMenuTriggerFor]="menuPre">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menuPre="matMenu">
+                                <button (click)="openDialogPreguntaConfig(evaExamen)" mat-menu-item>
+                                    <i class="fas fa-sliders-h" style="margin-right: 13px;"></i>
+                                    <span>Configurar</span>
+                                </button>
+                                <button (click)="openDialogPregunta(evaExamen)" mat-menu-item>
+                                    <i class="fas fa-file-upload"  style="margin-right: 13px;"></i>
+                                    <span>Subir CSV</span>
+                                </button>
+                                <button mat-menu-item disabled>
+                                    <i class="far fa-eye" style="margin-right: 13px;"></i>
+                                    <span>Detalles</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </mat-card>
+            </div>
+
+
+
+            <div class="col">
+                <mat-card>
+
+
+                    <!--Fecha de Evaluación-->
+                    <div class="d-flex bd-highlight text-muted text-sm-lef">
+                        <div style="margin-top: 10px;" class="p-2 flex-grow-1 bd-highlight text-muted text-sm-left"> Fecha de evaluación: {{evaExamen.fechainicio | date: 'dd/MM/yyyy' }}</div>
+                        <div class="p-2 bd-highlight">
+                            <button mat-icon-button>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--Hora de evaluación-->
+
+                    <div class="d-flex bd-highlight text-muted text-sm-lef">
+                        <div style="margin-top: 10px;" class="p-2 flex-grow-1 bd-highlight text-muted text-sm-left">
+                            Hora de inicio: de {{evaExamen.fechainicio | date: 'HH:mm'}} a {{evaExamen.fechafin | date: 'HH:mm'}}</div>
+                        <div class="p-2 bd-highlight">
+
+                        </div>
+                    </div>
+
+
+                </mat-card>
+            </div>
+        </div>
+
+
+
+    </mat-expansion-panel>
+
+</mat-accordion>
+
+
+<button (click)="openDialogExamen(null)" matTooltip="Nuevo examen!" mat-fab color="warn" class="app-fab--absolute">
+    <span class="material-icons">
+        add
+        </span>
+  </button>

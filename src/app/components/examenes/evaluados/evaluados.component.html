@@ -1,0 +1,58 @@
+<h2>
+
+
+    <i class="fas fa-cloud-upload-alt"></i> Subir CSV</h2>
+
+<mat-card>
+
+    <input type="file" class="upload" (change)="changeListener($event.target.files)" accept=".csv">
+
+    <p class="text-primary" style="font-size: 11px;">Formato CSV (por comas)</p>
+
+    <p class="text-secondary" style="margin-top: 10px; font-size: 11px;">Ejemplo CSV</p>
+    <table>
+        <tr>
+            <th>dni</th>
+            <th>rol</th>
+
+        </tr>
+        <tr>
+            <td>48657471</td>
+            <td>postulante</td>
+
+        </tr>
+        <tr>
+            <td>45697410</td>
+            <td>postulante</td>
+        </tr>
+        <tr>
+            <td>46741541</td>
+            <td>alumno</td>
+        </tr>
+    </table>
+    <p class="text-secondary" style="font-size: 11px;">En formato de texto plano la primera fila quedaria así: "48657471","postulante"</p>
+
+
+</mat-card>
+
+<mat-card>
+    Resultados
+    <div *ngIf="errores.length >0">
+        <p class="text-danger" style="font-size: 10px;"> Errores ({{errores.length}}):</p>
+        <div *ngFor="let error of errores">
+            <p class="text-danger" style="font-size: 10px;">Linea: {{error.row}} - Codigo: {{error.code}} - {{error.message}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="errores.length ==0">
+        <p class="text-success" style="font-size: 10px;"> Se cargo correctamente ({{data.length}}) resultados</p>
+
+    </div>
+
+
+</mat-card>
+
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

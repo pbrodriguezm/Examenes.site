@@ -1,0 +1,20 @@
+<div class="body-login">
+    <div style="height: 100vh; text-align: center;" class="d-flex align-items-center justify-content-center">
+
+        <mat-card>
+
+            <div class="logoEva">
+                <h2>Evaluaciones</h2>
+            </div>
+
+            <p><img src="../../../assets/images/logo_horizontal.png"></p>
+
+
+            <button (click)="signInWithGoogle()" type="button" class="btn btn-outline-primary"> <i class="fab fa-google"></i> Login Correo ULASALLE</button>
+            <div style="margin-top: 25px; max-width: 400px;">
+                <p style="font-size: 9px;" class="text-muted">S.O.: {{navegador.platform}}, Navegador: {{navegador.userAgent}}, Cookkies: {{navegador.cookieEnabled}}</p>
+            </div>
+
+        </mat-card>
+    </div>
+</div>
