@@ -7,3 +7,53 @@
 .example-full-width {
     width: 100%;
 }
+
+
+/*
+  Limited in width,
+  useful with grow mode proportional
+  or grow mode mixed
+*/
+
+.wrapper-horizontally-limited {
+    width: 500px;
+}
+
+
+/*
+    Limited in height,
+    useful with grow mode stretch
+  */
+
+.wrapper-vertically-limited {
+    width: 100%;
+    height: 500px;
+}
+
+.custom-month {
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+}
+
+.custom-month__week-caption,
+.custom-month__caption {
+    border: none;
+}
+
+.custom-month__day {
+    border: none;
+    padding: 0px;
+}
+
+.custom-month__day--default {
+    text-align: right;
+}
+
+.custom-month__day--today {
+    background: silver;
+}
+
+.custom-month__day--selected {
+    background: slategrey;
+    color: white;
+}

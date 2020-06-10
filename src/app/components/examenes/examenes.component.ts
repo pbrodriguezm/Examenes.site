@@ -83,12 +83,14 @@ export class ExamenesComponent implements OnInit {
 
     const dialogRef = this.dialog.open(EvaluadosComponent, {
       data: {
-        evaExamen: evaExamen
+        evaExamen: evaExamen,
+        cantidad: this.cantPostulante
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.cargarDatosExamen(evaExamen);
+      //console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -97,12 +99,13 @@ export class ExamenesComponent implements OnInit {
 
     const dialogRef = this.dialog.open(PreguntasComponent, {
       data: {
-        evaExamen: evaExamen
+        evaExamen: evaExamen,
+        
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.cargarDatosExamen(evaExamen);
     });
   }
 
@@ -115,7 +118,7 @@ openDialogPreguntaConfig(evaExamen) {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
+    this.cargarDatosExamen(evaExamen);
   });
 }
 
@@ -125,6 +128,7 @@ openDialogExamen(evaExamen) {
   const dialogRef = this.dialog.open(ConfigComponentExamen, {
     data: {
       evaExamen: evaExamen
+
     }
   });
 

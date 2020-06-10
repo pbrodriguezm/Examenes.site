@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {  MatSnackBar,  MatSnackBarHorizontalPosition,  MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 
+import { DatePipe } from '@angular/common';
 
 //servicios propios
 import { EvaExamenesService } from '../../../../services/api/evaExamenes.service';
@@ -15,20 +16,29 @@ import { EvaExamenes } from '../../../../services/model/evaExamenes';
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
-  styleUrls: ['./config.component.css']
+  styleUrls: ['./config.component.css'],
+  providers: [DatePipe]
 })
 export class ConfigComponentExamen implements OnInit {
   evaExamen:EvaExamenes={
     nombre: '',
     descripcion: '',
-    fechainicio: this.dateAsYYYYMMDDHHNNSS(new Date()),
+    fechainicio: new Date()+'',
     fechafin: this.dateAsYYYYMMDDHHNNSS(new Date()),
     validacion: 0,
   };
-
+ 
   nuevo=false;
   public selectedMoment = new Date();
+  titulo='Agregar examen';
+  horainicia='12:00';
+  horatermina='13:00';
+  //evaExamen.fechainicio
+  //evaExamen.fechafin
+
+
   constructor(
+    protected datePipe: DatePipe,
     private _snackBar: MatSnackBar,
     protected evaExamenesService:EvaExamenesService,
     public dialogRef: MatDialogRef<ConfigComponentExamen>,
@@ -36,9 +46,17 @@ export class ConfigComponentExamen implements OnInit {
       //console.log(data.evaExamen);
       if(data.evaExamen == null || data.evaExamen ==undefined){
         this.nuevo=true;
+   
       }else{     
         this.evaExamen= data.evaExamen;
+
+        this.titulo=data.evaExamen.nombre;
         this.nuevo=false;
+        let hinicio= new Date(data.evaExamen.fechainicio);
+        let hf= new Date(data.evaExamen.fechafin);
+    
+        this.horainicia = hinicio.getHours()+':'+hinicio.getMinutes();
+        this.horatermina = hf.getHours()+':'+hf.getMinutes();
         
       }
       
@@ -49,6 +67,15 @@ export class ConfigComponentExamen implements OnInit {
   }
 
   guardarCambios(){
+
+    
+
+    
+    //this.evaExamen.fechainicio=this.datePipe.transform(this.evaExamen.fechainicio, 'yyyy-MM-dd')+' '+this.horainicia;
+    
+    //this.evaExamen.fechafin= this.datePipe.transform(this.evaExamen.fechafin, 'yyyy-MM-dd')+' '+this.horatermina;
+    
+
     if(this.nuevo){
     this.evaExamenesService.evaExamenesPost(this.evaExamen,null,'return=representation').subscribe(data => {
       this.openSnackBar('Datos guardados correctamente', 'cerrar');

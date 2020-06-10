@@ -27,7 +27,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class EvaPreguntaEstructService {
 
-    protected basePath = 'http://168.138.150.197:3000';
+    protected basePath = 'http://168.138.150.197:3001';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

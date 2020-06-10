@@ -59,7 +59,7 @@ import { IntrospectionService } from '../services/api//introspection.service';
 import { LoginComponent } from './components/login/login.component';
 
 
-
+import { MonthCalendarModule } from 'simple-angular-calendar';
 
 /**Login SOcial*/
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
@@ -131,7 +131,7 @@ export function provideConfig() {
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     MatProgressBarModule,
-    
+    MonthCalendarModule,
     PapaParseModule
   ],
   providers: [     

@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Configuración de examen</h2>
+<h2 mat-dialog-title>{{titulo}}</h2>
 <mat-dialog-content class="mat-typography">
 
     <div>
@@ -14,17 +14,43 @@
         </mat-form-field>
         <div>
         </div>
-        <mat-form-field class="example-full-width">
-            <mat-label>Fecha y hora de inicio</mat-label>
-            <input type="datetime" matInput placeholder="AAAA-MM-DD HH:mm" [(ngModel)]="evaExamen.fechainicio">
-            <mat-icon matSuffix>calendar_today</mat-icon>
-        </mat-form-field>
+        <div class="row">
+            <div class="col">
+                <mat-form-field color="accent">
+                    <mat-label>Fecha de Inicio</mat-label>
+                    <input matInput [(ngModel)]="evaExamen.fechainicio" [matDatepicker]="picker1">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <mat-label>Fecha y hora de fin</mat-label>
-            <input type="datetime" matInput placeholder="AAAA-MM-DD HH:mm" [(ngModel)]="evaExamen.fechafin ">
-            <mat-icon matSuffix>calendar_today</mat-icon>
-        </mat-form-field>
+                <mat-form-field style="width: 70px;">
+                    <mat-label>Hora</mat-label>
+                    <input type="datetime" matInput placeholder="HH:mm" [(ngModel)]="horainicia">
+                    <mat-icon matSuffix>alarm</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field color="accent">
+                    <mat-label>Fecha de fin</mat-label>
+                    <input matInput [(ngModel)]="evaExamen.fechafin" [matDatepicker]="picker2">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field style="width: 70px;">
+                    <mat-label>Hora</mat-label>
+                    <input type="datetime" matInput placeholder=" HH:mm" [(ngModel)]="horatermina">
+                    <mat-icon matSuffix>alarm</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+
+
+
+
     </div>
 
 </mat-dialog-content>
