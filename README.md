@@ -1,8 +1,12 @@
-# Idemadmin
+# Examen de Admisión Online (ADMINISTRADOR)
+Google Login, Admisión examenes evaluación
+[Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+BACKEND: NodeJS, PostgreSQL
+<img src="https://i.ibb.co/9ZP9GgY/Examenes-Supervisor1.jpg">
+<img src="https://i.ibb.co/n649Rj6/das31.jpg">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
-## Development server
+## RUN server developer
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
