@@ -36,7 +36,6 @@
         "simple-angular-calendar": "^1.0.1",
         "ts-md5": "^1.2.7",
         "tslib": "^1.10.0",
-        "xlsx": "^0.16.2",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {
